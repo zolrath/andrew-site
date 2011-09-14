@@ -5,5 +5,5 @@
         hiccup.core
         hiccup.page-helpers))
 
-(defpage "/*" []
-         (common/layout))
+(defpage "/" []
+         (common/layout "Nothing"))
