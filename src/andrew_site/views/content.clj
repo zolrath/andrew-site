@@ -22,7 +22,7 @@
 Working on my RCHSA certification when there is spare time.")
 
 (def certifications
-  (link-to {:target "_blank"} "apluscert.pef" (image "aplus.jpg")))
+  (link-to {:target "_blank"} "apluscert.pdf" (image "img/aplus.jpg")))
 
 ;; Two methods of listing jobs. Either def entries for each job then include in the all-jobs vector,
 ;; or simply add maps to the jobs def. The vector allows you to easily re-order and temporarily remove
