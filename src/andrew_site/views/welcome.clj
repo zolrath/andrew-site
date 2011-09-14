@@ -5,5 +5,5 @@
         hiccup.core
         hiccup.page-helpers))
 
-(defpage "/resume" []
+(defpage "/*" []
          (common/layout))
