@@ -67,7 +67,7 @@
 
 (defpartial main-body []
   [:div#wrapContent.container_24
-   (jobs-list all-jobs)
+   (jobs-list jobs)
    (sidebar)])
 
 (defpartial layout [& content]
