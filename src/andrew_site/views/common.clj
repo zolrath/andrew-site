@@ -65,10 +65,9 @@
   [:div#content.grid_13
    (map job-item items)])
 
-(defpartial main-body []
+(defpartial main-body [& content]
   [:div#wrapContent.container_24
-   (jobs-list jobs)
-   (sidebar)])
+   content])
 
 (defpartial layout [& content]
   (html5
@@ -79,4 +78,4 @@
    [:body
     [:div#wrap
      (header top-right desired-title (split-name header-name))
-     (main-body)]]))
+     (main-body content)]]))

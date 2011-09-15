@@ -6,5 +6,4 @@
         hiccup.page-helpers))
 
 (defpage "/" []
-  {"Cache-Control" "no-cache, must-revalidate"}
-  (common/layout "Nothing"))
+  (common/layout (list-jobs jobs) (sidebar)))
