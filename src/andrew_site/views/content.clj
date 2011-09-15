@@ -15,13 +15,17 @@
   (map #(:skill %) (fetch :skills :where {:level "lesser"})))
 
 (defn add-major-skill [skill]
-  (insert! :skills {:skill skill :level "major"}))
+  (insert! :skills {:level "major" :skill skill}))
 
 (defn add-lesser-skill [skill]
-  (insert! :skills {:skill skill :level "lesser"}))
+  (insert! :skills {:level "lesser" :skill skill}))
 
-(defn add-job [name start-year end-year url description]
+(defn add-job [{:keys [name start-year end-year url description]}]
   (insert! :jobs {:name name :start-year start-year :end-year end-year :url url :description description}))
+
+(def jobs
+  (fetch :jobs))
+
 
 (defn split-mongo-url [url]
   "Parses mongodb url from heroku, eg. mongodb://user:pass@localhost:1234/db"
@@ -67,32 +71,32 @@ Working on my RCHSA certification when there is spare time.")
 ;; the name of your entries into the vector after making the map.
 
 (def underground-elephant
-  {:company-name "Underground Elephant"
+  {:name "Underground Elephant"
    :start-year "2011"
    :end-year "2011"
    :url "http://www.undergroundelephant.com"
-   :job-description "Junior Systems Administrator pulling double duty as the Help Desk Lead. Responsible for local server setup, log monitoring, data backup, and security patches when not working with our vendors and contractors."})
+   :description "Junior Systems Administrator pulling double duty as the Help Desk Lead. Responsible for local server setup, log monitoring, data backup, and security patches when not working with our vendors and contractors."})
 
 (def family-health-centers
-  {:company-name "Family Health Centers"
+  {:name "Family Health Centers"
    :start-year "2010"
    :end-year "2011"
    :url "http://www.fhcsd.org"
-   :job-description "Handled 50% of all tickets for the organization and still managed to automate essential processesses, write a knowledge base, and deploy company phones."})
+   :description "Handled 50% of all tickets for the organization and still managed to automate essential processesses, write a knowledge base, and deploy company phones."})
 
 (def ed-venture
-  {:company-name "EdVenture Partners"
+  {:name "EdVenture Partners"
    :start-year "2010"
    :end-year "2010"
    :url "http://www.edventurepartners.com"
-   :job-description "Flying around the country with an expense account and a fancy suit, but it wasn't for me. While at EdVenture Partners I managed five concurrent marketing projects in three states, all centered around the 2011 Chevrolet lineup."})
+   :description "Flying around the country with an expense account and a fancy suit, but it wasn't for me. While at EdVenture Partners I managed five concurrent marketing projects in three states, all centered around the 2011 Chevrolet lineup."})
 
 (def marriage-equality
-  {:company-name "Marriage Equality"
+  {:name "Marriage Equality"
    :start-year "2008"
    :end-year "2010"
    :url "http://www.marriageequality.org"
-   :job-description "What got me started. Thought I was keeping busy between classes - do some good, that sort of thing."})
+   :description "What got me started. Thought I was keeping busy between classes - do some good, that sort of thing."})
 
 (def all-jobs [underground-elephant family-health-centers ed-venture marriage-equality])
 
