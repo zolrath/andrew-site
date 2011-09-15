@@ -6,4 +6,5 @@
         hiccup.page-helpers))
 
 (defpage "/" []
-         (common/layout "Nothing"))
+  {"Cache-Control" "no-cache, must-revalidate"}
+  (common/layout "Nothing"))
