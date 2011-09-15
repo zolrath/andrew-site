@@ -21,7 +21,7 @@
   (insert! :skills {:skill skill :level "lesser"}))
 
 (defn add-job [name start-year end-year url description]
-  (insert! :jobs {:name name :start-year start-year :end-year :url url :description description}))
+  (insert! :jobs {:name name :start-year start-year :end-year end-year :url url :description description}))
 
 (defn split-mongo-url [url]
   "Parses mongodb url from heroku, eg. mongodb://user:pass@localhost:1234/db"
