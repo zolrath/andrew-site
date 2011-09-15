@@ -1,7 +1,29 @@
 (ns andrew-site.views.content
   (:use noir.core
         hiccup.core
-        hiccup.page-helpers))
+        hiccup.page-helpers
+        somnium.congomongo
+        [somnium.congomongo.config :only [*mongo-config*]]))
+
+(mongo! :db "mydb")
+
+
+(defn split-mongo-url [url]
+  "Parses mongodb url from heroku, eg. mongodb://user:pass@localhost:1234/db"
+  (let [matcher (re-matcher #"^.*://(.*?):(.*?)@(.*?):(\d+)/(.*)$" url)] ;; Setup the regex.
+    (when (.find matcher) ;; Check if it matches.
+      (zipmap [:match :user :pass :host :port :db] (re-groups matcher))))) ;; Construct an options map.
+
+(defn maybe-init []
+  "Checks if connection and collection exist, otherwise initialize."
+  (when (not (connection? *mongo-config*)) ;; If global connection doesn't exist yet.
+    (let [mongo-url (get (System/getenv) "MONGOHQ_URL") ;; Heroku puts it here.
+          config    (split-mongo-url mongo-url)] ;; Extract options.
+      (println "Initializing mongo @ " mongo-url)
+      (mongo! :db (:db config) :host (:host config) :port (Integer. (:port config))) ;; Setup global mongo.
+      (authenticate (:user config) (:pass config)) ;; Setup u/p.
+      (or (collection-exists? :firstcollection) ;; Create collection named 'firstcollection' if it doesn't exist.
+            (create-collection! :firstcollection)))))
 
 (def top-right
   (list "Interested? " (mail-to "jobs@andrewmarrone.com?subject=Employment%20Opportunity" "Contact me!")))
@@ -44,7 +66,7 @@ Working on my RCHSA certification when there is spare time.")
    :job-description "Handled 50% of all tickets for the organization and still managed to automate essential processesses, write a knowledge base, and deploy company phones."})
 
 (def ed-venture
-  {:company-name "Ed Venture Partners"
+  {:company-name "EdVenture Partners"
    :start-year "2010"
    :end-year "2010"
    :url "http://www.edventurepartners.com"
@@ -72,7 +94,7 @@ Working on my RCHSA certification when there is spare time.")
      :url "http://www.fhcsd.org"
      :job-description "Handled 50% of all tickets for the organization and still managed to automate essential processesses, write a knowledge base, and deploy company phones."}
 
-    {:company-name "Ed Venture Partners"
+    {:company-name "EdVenture Partners"
      :start-year "2010"
      :end-year "2010"
      :url "http://www.edventurepartners.com"
