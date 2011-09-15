@@ -6,7 +6,7 @@
         [somnium.congomongo.config :only [*mongo-config*]]))
 
 (mongo! :db "app1002329" :host "staff.mongohq.com" :port 10001)
-(authenticate :user "heroku" :pass "4df8f6a5a6484618f44d7359d0d9f2bf")
+(authenticate "heroku" "4df8f6a5a6484618f44d7359d0d9f2bf")
 
 (def major-skills
   (map #(:skill %) (fetch :skills :where {:level "major"})))
