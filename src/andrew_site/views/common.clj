@@ -50,15 +50,15 @@
       [:ul (for [skill lesser-skills] [:li skill])]]]]])
 
 
-(defpartial job-item [{:keys [company-name start-year end-year url job-description]}]
+(defpartial job-item [{:keys [name start-year end-year url description]}]
   [:div.yearPanel {:id (str "y" start-year)}
    [:div.resumeEntry
     [:div.when.grid_3
      [:p end-year [:br] [:em start-year]]]
     [:div.description.grid_9
-     [:h3 company-name]
+     [:h3 name]
      [:h5 (link-to url "Link")]
-     [:p job-description]]
+     [:p description]]
     [:div.clear]]])
 
 (defpartial jobs-list [items]

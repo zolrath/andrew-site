@@ -26,7 +26,6 @@
 (def jobs
   (fetch :jobs))
 
-
 (defn split-mongo-url [url]
   "Parses mongodb url from heroku, eg. mongodb://user:pass@localhost:1234/db"
   (let [matcher (re-matcher #"^.*://(.*?):(.*?)@(.*?):(\d+)/(.*)$" url)] ;; Setup the regex.
@@ -100,7 +99,7 @@ Working on my RCHSA certification when there is spare time.")
 
 (def all-jobs [underground-elephant family-health-centers ed-venture marriage-equality])
 
-(def jobs
+(def map-of-jobs
   '({:company-name "Underground Elephant"
      :start-year "2011"
      :end-year "2011"
