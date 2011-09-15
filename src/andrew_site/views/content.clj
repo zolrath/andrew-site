@@ -14,13 +14,13 @@
 (def lesser-skills
   (map #(:skill %) (fetch :skills :where {:level "lesser"})))
 
-(def add-major-skill [skill]
+(defn add-major-skill [skill]
   (insert! :skills {:skill skill :level "major"}))
 
-(def add-lesser-skill [skill]
+(defn add-lesser-skill [skill]
   (insert! :skills {:skill skill :level "lesser"}))
 
-(def add-job [name start-year end-year url description]
+(defn add-job [name start-year end-year url description]
   (insert! :jobs {:name name :start-year start-year :end-year :url url :description description}))
 
 (defn split-mongo-url [url]
