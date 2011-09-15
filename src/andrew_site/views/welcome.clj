@@ -4,7 +4,9 @@
             [noir.content.pages :as pages])
   (:use noir.core
         hiccup.core
-        hiccup.page-helpers))
+        hiccup.page-helpers
+        somnium.congomongo
+        [somnium.congomongo.config :only [*mongo-config*]))
 
 (defn split-mongo-url [url]
   "Parses mongodb url from heroku, eg. mongodb://user:pass@localhost:1234/db"
