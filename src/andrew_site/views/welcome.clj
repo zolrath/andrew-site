@@ -7,4 +7,5 @@
         hiccup.page-helpers))
 
 (defpage "/" []
-  (common/layout (common/jobs-list content/jobs) (common/sidebar)))
+  (let [jobs (content/jobs)]
+   (common/layout (common/jobs-list jobs) (common/sidebar))))
