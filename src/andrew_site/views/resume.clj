@@ -49,14 +49,14 @@
      [:p profile]]
     [:div#education.sidebarPanel
      [:h4 "Certifications"]
-     (cert-list db/certifications)]
+     (cert-list (db/certifications))]
     [:div#skills.sidebarPanel
      [:div.grid_4.alpha
       [:h4 "Major"]
-      [:ul (for [skill db/major-skills] [:li skill])]]
+      [:ul (for [skill (db/major-skills)] [:li skill])]]
      [:div.grid_4.omega
       [:h4 "Lesser"]
-      [:ul (for [skill db/lesser-skills] [:li skill])]]]]])
+      [:ul (for [skill (db/lesser-skills)] [:li skill])]]]]])
 
 (defpartial job-item [{:keys [name start-year end-year url description]}]
   [:div.yearPanel {:id (str "y" start-year)}
@@ -75,7 +75,7 @@
 
 (defpartial main-body []
   [:div#wrapContent.container_24
-   (jobs-list db/jobs)
+   (jobs-list (db/jobs))
    (sidebar)])
 
 (defpage "/" []

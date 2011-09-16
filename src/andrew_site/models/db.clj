@@ -22,10 +22,10 @@
 
 (maybe-init)
 
-(def major-skills
+(defn major-skills []
   (map #(:skill %) (fetch :skills :where {:level "major"})))
 
-(def lesser-skills
+(defn lesser-skills []
   (map #(:skill %) (fetch :skills :where {:level "lesser"})))
 
 (defn add-major-skill [skill]
@@ -37,8 +37,8 @@
 (defn add-job [{:keys [name start-year end-year url description]}]
   (insert! :jobs {:name name :start-year start-year :end-year end-year :url url :description description}))
 
-(def jobs
+(defn jobs []
   (fetch :jobs))
 
-(def certifications
+(defn certifications []
   (fetch :certifications))
