@@ -6,10 +6,10 @@
 (def top-right
   (list "Interested? " (mail-to "jobs@andrewmarrone.com?subject=Employment%20Opportunity" "Contact me!")))
 
-(def desired-title
+(def title
   (list "Junior" [:br] [:em "Systems Administrator"]))
 
-(def header-name "Andrew Marrone")
+(def name "Andrew Marrone")
 
 (def major-skills
   ["Shell Scripting" "Ubuntu" "CentOS" "OS X" "VMWare"])
