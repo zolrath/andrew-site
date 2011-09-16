@@ -8,4 +8,4 @@
 
 (defpage "/" []
   (db/maybe-init)
-  (common/layout (common/jobs-list db/jobs) (common/sidebar)))
+  (common/layout))

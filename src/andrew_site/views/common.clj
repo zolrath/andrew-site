@@ -72,11 +72,12 @@
   [:div#content.grid_13
    (map job-item items)])
 
-(defpartial main-body [& content]
+(defpartial main-body []
   [:div#wrapContent.container_24
-   content])
+   (jobs-list db/jobs)
+   (sidebar)])
 
-(defpartial layout [& content]
+(defpartial layout []
   (html5
    [:head
     [:title "Andrew Marrone"]
@@ -85,4 +86,4 @@
    [:body
     [:div#wrap
      (header top-right desired-title (split-name header-name))
-     (main-body content)]]))
+     (main-body)]]))
