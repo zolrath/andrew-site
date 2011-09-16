@@ -1,4 +1,5 @@
 (ns andrew-site.views.common
+  (:require [andrew-site.models.db :as db])
   (:use andrew-site.views.content
         noir.core
         hiccup.core
@@ -20,12 +21,18 @@
         [:li.yearsLi (link-to "#y2010" "2010")]
         [:li.yearsLi.lastYear (link-to {:class "active"} "#wrap" "2011")]]]
       [:div#topBarRight.grid_11
-       [:h2 topright]]]
+       [:h2 db/topright]]]
      [:div#information
       [:div#info.grid_13
-       [:h2 title]]
+       [:h2 db/title]]
       [:div#name.grid_11
-       [:h1 name]]]]]])
+       [:h1 db/name]]]]]])
+
+(defpartial cert-item [{:keys [img link name]}]
+  [:p (link-to {:target "_blank"} (str "/pdf/" link) (image (str "/img/cert/" img)))])
+
+(defpartial cert-list [certs]
+  (map cert-item certs))
 
 (defpartial sidebar []
   [:div#sidebar.grid_11
@@ -37,17 +44,17 @@
    [:div#sidebarContent.grid_8
     [:div#profile.sidebarPanel
      [:h4 "Profile"]
-     [:p profile]]
+     [:p db/profile]]
     [:div#education.sidebarPanel
      [:h4 "Certifications"]
-     [:p certifications]]
+     (cert-list db/certifications)]
     [:div#skills.sidebarPanel
      [:div.grid_4.alpha
       [:h4 "Major"]
-      [:ul (for [skill major-skills] [:li skill])]]
+      [:ul (for [skill db/major-skills] [:li skill])]]
      [:div.grid_4.omega
       [:h4 "Lesser"]
-      [:ul (for [skill lesser-skills] [:li skill])]]]]])
+      [:ul (for [skill db/lesser-skills] [:li skill])]]]]])
 
 
 (defpartial job-item [{:keys [name start-year end-year url description]}]

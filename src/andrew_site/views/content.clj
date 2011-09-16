@@ -5,27 +5,6 @@
         somnium.congomongo
         [somnium.congomongo.config :only [*mongo-config*]]))
 
-;(mongo! :db "app1002329" :host "staff.mongohq.com" :port 10001)
-;(authenticate "heroku" "4df8f6a5a6484618f44d7359d0d9f2bf")
-
-(def major-skills
-  (map #(:skill %) (fetch :skills :where {:level "major"})))
-
-(def lesser-skills
-  (map #(:skill %) (fetch :skills :where {:level "lesser"})))
-
-(defn add-major-skill [skill]
-  (insert! :skills {:level "major" :skill skill}))
-
-(defn add-lesser-skill [skill]
-  (insert! :skills {:level "lesser" :skill skill}))
-
-(defn add-job [{:keys [name start-year end-year url description]}]
-  (insert! :jobs {:name name :start-year start-year :end-year end-year :url url :description description}))
-
-(def jobs
-  (fetch :jobs))
-
 (def top-right
   (list "Interested? " (mail-to "jobs@andrewmarrone.com?subject=Employment%20Opportunity" "Contact me!")))
 
@@ -34,11 +13,11 @@
 
 (def header-name "Andrew Marrone")
 
-(comment (def major-skills
-   ["Shell Scripting" "Ubuntu" "CentOS" "OS X" "VMWare"]))
+(def major-skills
+  ["Shell Scripting" "Ubuntu" "CentOS" "OS X" "VMWare"])
 
-(comment (def lesser-skills
-   ["ESXi" "Microsoft Exchange" "Windows Server 2003" "Active Directory"]))
+(def lesser-skills
+  ["ESXi" "Microsoft Exchange" "Windows Server 2003" "Active Directory"])
 
 (def profile
   "Three years help desk experience while taking on more admin roles, regarded by peers and supervisors as a top-notch performer always eager to learn more.<br />
