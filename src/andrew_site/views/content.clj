@@ -1,9 +1,7 @@
 (ns andrew-site.views.content
   (:use noir.core
         hiccup.core
-        hiccup.page-helpers
-        somnium.congomongo
-        [somnium.congomongo.config :only [*mongo-config*]]))
+        hiccup.page-helpers))
 
 (def top-right
   (list "Interested? " (mail-to "jobs@andrewmarrone.com?subject=Employment%20Opportunity" "Contact me!")))

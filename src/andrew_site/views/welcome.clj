@@ -4,11 +4,8 @@
             [noir.content.pages :as pages])
   (:use noir.core
         hiccup.core
-        hiccup.page-helpers
-        somnium.congomongo
-        [somnium.congomongo.config :only [*mongo-config*]))
+        hiccup.page-helpers))
 
 (defpage "/" []
-  (maybe-init)
-  (let [jobs db/jobs]
-   (common/layout (db/jobs-list jobs) (common/sidebar))))
+  (db/maybe-init)
+  (common/layout (common/jobs-list db/jobs) (common/sidebar)))

@@ -37,3 +37,6 @@
 
 (def jobs
   (fetch :jobs))
+
+(def certifications
+  (fetch :certifications))

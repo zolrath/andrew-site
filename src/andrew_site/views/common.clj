@@ -21,12 +21,12 @@
         [:li.yearsLi (link-to "#y2010" "2010")]
         [:li.yearsLi.lastYear (link-to {:class "active"} "#wrap" "2011")]]]
       [:div#topBarRight.grid_11
-       [:h2 db/topright]]]
+       [:h2 topright]]]
      [:div#information
       [:div#info.grid_13
-       [:h2 db/title]]
+       [:h2 title]]
       [:div#name.grid_11
-       [:h1 db/name]]]]]])
+       [:h1 name]]]]]])
 
 (defpartial cert-item [{:keys [img link name]}]
   [:p (link-to {:target "_blank"} (str "/pdf/" link) (image (str "/img/cert/" img)))])
@@ -44,7 +44,7 @@
    [:div#sidebarContent.grid_8
     [:div#profile.sidebarPanel
      [:h4 "Profile"]
-     [:p db/profile]]
+     [:p profile]]
     [:div#education.sidebarPanel
      [:h4 "Certifications"]
      (cert-list db/certifications)]
