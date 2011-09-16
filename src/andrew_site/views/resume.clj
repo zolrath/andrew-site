@@ -2,7 +2,8 @@
   (:require [andrew-site.views.common :as common]
             [andrew-site.models.db :as db]
             [noir.content.pages :as pages])
-  (:use noir.core
+  (:use andrew-site.views.content
+        noir.core
         hiccup.core
         hiccup.page-helpers))
 
@@ -22,12 +23,12 @@
         [:li.yearsLi (link-to "#y2010" "2010")]
         [:li.yearsLi.lastYear (link-to {:class "active"} "#wrap" "2011")]]]
       [:div#topBarRight.grid_11
-       [:h2 db/top-right]]]
+       [:h2 top-right]]]
      [:div#information
       [:div#info.grid_13
-       [:h2 db/title]]
+       [:h2 title]]
       [:div#name.grid_11
-       [:h1 db/name]]]]]])
+       [:h1 name]]]]]])
 
 (defpartial cert-item [{:keys [img link name]}]
   [:p (link-to {:target "_blank"} (str "/pdf/" link) (image (str "/img/cert/" img)))])
