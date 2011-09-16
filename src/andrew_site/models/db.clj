@@ -34,8 +34,17 @@
 (defn add-lesser-skill [skill]
   (insert! :skills {:level "lesser" :skill skill}))
 
+(defn remove-skill [name]
+  (let [skill (fetch-one :skills :where {:skill name})]
+   (destroy! :skills skill)))
+
 (defn add-job [{:keys [name start-year end-year url description]}]
   (insert! :jobs {:name name :start-year start-year :end-year end-year :url url :description description}))
+
+(defn remove-job [name]
+  (let [job (fetch-one :jobs :where {:name name})]
+    (destroy! :jobs job)))
+
 
 (defn jobs []
   (fetch :jobs))
