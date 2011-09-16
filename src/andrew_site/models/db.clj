@@ -19,7 +19,7 @@
       (println "Initializing mongo @ " mongo-url)
       (mongo! :db (:db config) :host (:host config) :port (Integer. (:port config))) ;; Setup global mongo.
       (authenticate (:user config) (:pass config)))))
-
+(maybe-init)
 (def major-skills
   (map #(:skill %) (fetch :skills :where {:level "major"})))
 
